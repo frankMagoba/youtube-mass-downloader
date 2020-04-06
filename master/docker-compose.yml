@@ -1,0 +1,19 @@
+version: "2"
+services:
+  node:
+    build: ./app
+    volumes:
+      - ./app:/src/app
+    links:
+      - redis:redis
+    depends_on:
+      - redis
+  redis:
+    image: redis:4-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./docker-configs/redis.conf:/etc/redis.conf
+      - ./docker-data/redis:/var/lib/redis
+    command: sh -c 'chown redis:redis /var/lib/redis && redis-server /etc/redis.conf'

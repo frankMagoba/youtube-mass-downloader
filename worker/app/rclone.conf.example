@@ -1,0 +1,5 @@
+[WTAKO]
+type = drive
+client_id = 
+client_secret = 
+token = {"access_token":"PLEASE_GET_FROM_RCLONE_CLIENT"}
